@@ -1,0 +1,109 @@
+:root {
+  --paper: #f3efe6;
+  --card: #fffdf8;
+  --ink: #26221c;
+  --muted: #7a7266;
+  --line: #e0d9ca;
+  --accent: #2f6f4f;
+  --accent-ink: #ffffff;
+  --like: #c2412d;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+a { color: inherit; }
+
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 18px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700; font-size: 1.5rem; text-decoration: none; color: var(--accent);
+}
+#nav { display: flex; gap: 10px; align-items: center; }
+
+main { max-width: 620px; margin: 0 auto; padding: 18px 14px 60px; }
+
+button, input, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid #f0b429; outline-offset: 2px; }
+
+.btn {
+  border: 1px solid var(--ink); background: transparent; color: var(--ink);
+  padding: 7px 16px; border-radius: 999px; cursor: pointer; font-weight: 600;
+  text-decoration: none; display: inline-block;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.small { padding: 4px 12px; font-size: 0.9rem; }
+.btn.ghost { border-color: transparent; color: var(--muted); }
+.btn:disabled { opacity: 0.5; cursor: default; }
+
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 16px; margin-bottom: 14px;
+}
+
+h1, h2 { font-family: 'Bricolage Grotesque', sans-serif; margin: 0 0 8px; }
+h1 { font-size: 1.8rem; }
+
+.field { display: block; margin-bottom: 12px; }
+.field span { display: block; font-weight: 600; margin-bottom: 4px; }
+.field input, textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--line);
+  border-radius: 10px; background: #fff;
+}
+textarea { resize: vertical; min-height: 80px; }
+.error { color: var(--like); min-height: 1.4em; margin: 0 0 8px; }
+.switch { color: var(--muted); margin-top: 12px; }
+
+.composer-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+.count { color: var(--muted); font-size: 0.9rem; }
+
+.tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+.tab { border: 0; background: transparent; padding: 6px 14px; border-radius: 999px; cursor: pointer; color: var(--muted); font-weight: 600; }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+
+.post-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.author { font-weight: 700; text-decoration: none; }
+.author:hover { text-decoration: underline; }
+.time { color: var(--muted); font-size: 0.88rem; }
+.post-body { margin: 6px 0 10px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.actions { display: flex; gap: 8px; align-items: center; }
+.act { border: 0; background: transparent; cursor: pointer; padding: 4px 8px; border-radius: 8px; color: var(--muted); font-weight: 600; }
+.act:hover { background: #efe9da; }
+.act.liked { color: var(--like); }
+.act.del { margin-left: auto; }
+
+.comments { border-top: 1px solid var(--line); margin-top: 10px; padding-top: 10px; }
+.comment { margin-bottom: 8px; }
+.comment b { margin-right: 6px; }
+.comment-form { display: flex; gap: 8px; margin-top: 8px; }
+.comment-form input { flex: 1; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
+
+.profile-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.bio { color: var(--muted); margin: 4px 0 10px; }
+.stats { display: flex; gap: 18px; }
+.stats b { font-size: 1.1rem; }
+.empty { color: var(--muted); text-align: center; padding: 30px 0; }
+
+.toast {
+  position: fixed; left: 50%; bottom: 20px; transform: translate(-50%, 20px);
+  background: var(--ink); color: var(--paper); padding: 10px 18px; border-radius: 999px;
+  opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
